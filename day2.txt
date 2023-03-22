@@ -1,0 +1,185 @@
+## BALANCING PARANTHESIS ##
+class Stack:
+    temp=[]
+    def spush(self,value):
+        if len(self.temp)>=1:
+            if self.temp[-1]=='(' and value==')':
+                self.temp.pop()
+            else:
+                self.temp.append(value)
+        else:
+            self.temp.append(value)
+string=input()
+ob=Stack()
+i=0
+while(i<len(string)):
+    ob.spush(string[i])
+    i+=1
+if(len(ob.temp)>0):
+    print('string is unbalanced')
+else:
+    print('string is balanced')
+
+o/p:
+((())(
+string is unbalanced
+
+2..
+#Implementation of linked list 
+class Node:
+    def __init__(self,value):
+        self.data=value
+        self.next=None
+class LinkedList():
+    def add_element_at_start(self,head,value):
+            new_node=Node(value)     
+            new_node.next=head
+            head=new_node
+            return head
+        
+    def add_element(self,head,value):
+            new_node=Node(value)     #step1
+            temp=head
+            while temp.next!=None: #s2
+                temp=temp.next
+            temp.next=new_node    #s3
+            
+    def insert(self,head,value,pos):
+        new_node=Node(value)
+        curr=head        
+        prev=None
+        while pos!=0:
+            prev=curr
+            curr=curr.next
+            pos=pos-1
+        prev.next=new_node
+        new_node.next=curr
+        
+    def remove_element(self):
+        temp=head
+        while(temp.next.next!=None):
+            temp=temp.next
+        temp.next=None
+
+    def print_list(self,head):
+        temp=head
+        while(temp!=None):
+            print(temp.data,end=" -> ")
+            temp=temp.next
+    def search_element(self,value):
+        pass
+    
+obj=LinkedList()
+n=int(input("Enter the number of elements to be inserted:"))
+print("enter the elements to be inserted:")
+head=None
+for i in range(n):
+    if(i==0):
+        head=Node(input())
+    else:
+        obj.add_element(head,input())
+obj.print_list(head)
+ele=input("\nEnter the element to be inserted")
+pos=int(input("Enter the position at which the element must be inserted:"))
+obj.insert(head,ele,pos)
+print()
+obj.print_list(head)
+
+o/p:
+Enter the number of elements to be inserted:4
+enter the elements to be inserted:
+10
+20
+30
+40
+10 -> 20 -> 30 -> 40 -> 
+Enter the element to be inserted100
+Enter the position at which the element must be inserted:2
+
+10 -> 20 -> 100 -> 30 -> 40 -> 
+
+3...
+class Node:
+    def __init__(self,value):
+        self.data=value
+        self.next=None
+class LinkedList():
+    def add_element_at_start(self,head,value):
+            new_node=Node(value)     
+            new_node.next=head
+            head=new_node
+            return head
+        
+    def add_element(self,head,value):
+            new_node=Node(value)     #step1
+            temp=head
+            while temp.next!=None: #s2
+                temp=temp.next
+            temp.next=new_node    #s3
+            
+    def insert(self,head,value,pos):
+        new_node=Node(value)
+        curr=head        
+        prev=None
+        while pos!=0:
+            prev=curr
+            curr=curr.next
+            pos=pos-1
+        prev.next=new_node
+        new_node.next=curr
+        
+    def remove_element(self):
+        temp=head
+        while(temp.next.next!=None):
+            temp=temp.next
+        temp.next=None
+
+    def print_list(self,head):
+        temp=head
+        while(temp!=None):
+            print(temp.data,end=" -> ")
+            temp=temp.next
+    def search_element(self,value):
+        pass
+    def reverse(self,head):
+        curr=head
+        prev=None
+        while(curr!=None):
+            temp=curr.next
+            curr.next=prev
+            prev=curr
+            curr=temp
+        return prev
+    
+obj=LinkedList()
+n=int(input("Enter the number of elements to be inserted:"))
+print("enter the elements to be inserted:")
+head=None
+for i in range(n):
+    if(i==0):
+        head=Node(input())
+    else:
+        obj.add_element(head,input())
+obj.print_list(head)
+ele=input("\nEnter the element to be inserted:")
+pos=int(input("Enter the position at which the element must be inserted:"))
+obj.insert(head,ele,pos)
+obj.print_list(head)
+print()
+head=obj.reverse(head)
+print()
+obj.print_list(head)
+
+o/p:
+Enter the number of elements to be inserted:4
+enter the elements to be inserted:
+10
+20
+30
+40
+10 -> 20 -> 30 -> 40 -> 
+Enter the element to be inserted:100
+Enter the position at which the element must be inserted:2
+10 -> 20 -> 100 -> 30 -> 40 -> 
+
+40 -> 30 -> 100 -> 20 -> 10 -> 

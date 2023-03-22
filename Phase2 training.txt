@@ -1,0 +1,178 @@
+#STACK: one side open ended and last in first out
+class Stack:
+    arr=[]
+    size=5
+    def stack_push(self,element):
+        if(len(self.arr)==self.size):
+            print("stack overflow")
+        else:
+            self.arr.append(element)
+    def stack_pop(self):
+        if(len(self.arr)==0):
+            print("stack underflow")
+        else:
+            print(self.arr.pop(0))
+    def stack_peek(self):
+        if(len(self.arr)==0):
+            print("stack is empty")
+        else:
+            return self.arr[-1]
+    def isEmpty(self):
+        if(len(self.arr)==0):
+            return True
+        else:
+            return False
+s=Stack()      
+s.stack_push(10)
+s.stack_push(20)
+s.stack_push(30)
+s.stack_push(40)
+print(s.arr)
+s.stack_pop()
+s.stack_pop()
+s.stack_pop()
+s.stack_pop()
+print(s.arr)
+print(s.stack_peek())
+
+o/p:
+[10, 20, 30, 40]
+10
+20
+30
+40
+[]
+stack is empty
+None
+
+
+2...
+#QUEUE: both sides open ended where insertion and deletion takes place and it is first in first out
+class Queue:
+    arr=[]
+    size=5
+    def Enqueue(self,element):
+        if(len(self.arr)==self.size):
+            print("queue overflow")
+        else:
+            self.arr.append(element)
+    def Dequeue(self):
+        if(len(self.arr)==0):
+            print("queue underflow")
+        else:
+            print(self.arr.pop(0))
+    def isEmpty(self):
+        if(len(self.arr)!=0):
+            return True
+        else:
+            return False
+s=Queue()      
+s.Enqueue(10)
+s.Enqueue(20)
+s.Enqueue(30)
+s.Enqueue(40)
+print(s.arr)
+s.Dequeue()
+s.Dequeue()
+s.Dequeue()
+s.Dequeue()
+print(s.arr)
+
+o/p:
+
+[10, 20, 30, 40]
+10
+20
+30
+40
+[]
+
+3....
+##### USING WHILE LOOP
+#binary search
+#they are two methods to do binary search
+#while loop and recurssion
+
+arr=[i for i in range(1,11)]
+print(arr)
+key=3
+low=0
+high=len(arr)-1
+found=False
+while low<=high:
+    mid=(low+high)//2
+    if arr[mid]==key:
+        print("found:",mid)
+        found=True
+        break
+    elif key < arr[mid]:
+        high=mid-1
+    elif key > arr[mid]:
+        low=mid+1
+    else:
+        print("element not found ")
+
+o/p:
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+found: 2
+
+4....
+########-implement the functionality of stack using only queue-------
+class Queue:
+    temp=[]
+    original=[]
+    def enqueue(self,element):
+        self.temp.append(element)     #step 1
+        while len(self.original)!=0:   #step 2
+            pop_element=self.original.pop(0)
+            self.temp.append(pop_element)
+        while len(self.temp)!=0:#step 3
+            pop_element=self.temp.pop(0)
+            self.original.append(pop_element)
+
+    def dequeue(self):
+        return self.original.pop(0)
+    def printQueue(self):
+        print("Temp:",self.temp)
+        print("Original:",self.original)
+
+ob= Queue()
+ob.enqueue(10)
+ob.enqueue(20)
+ob.enqueue(30)
+ob.enqueue(40)
+ob.enqueue(50)
+ob.printQueue()
+
+o/p:
+
+Temp: []
+Original: [50, 40, 30, 20, 10]
+
+5...
+def binary_search(arr,low,high,key):
+    while(low<=high):
+        mid=(low+high)//2
+        if(l[mid]<key):
+            low=mid+1
+            return binary_search(arr,low,high,key)
+        elif(l[mid]>key):
+            high=mid-1
+            return binary_search(arr,low,high,key)
+        else:
+            print("element is found at",mid)
+            c=1
+            return 
+        
+    print("element is not found")
+    return
+arr=list(map(int,input().split()))
+low=0
+high=len(arr)-1
+key=int(input())
+res=binary_search(arr,low,high,key)
+
+o/p:
+10 20 30 40 50 60
+30
