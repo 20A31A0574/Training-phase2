@@ -1,0 +1,69 @@
+1...
+
+def quick_sort(arr):
+    if len(arr)<=1:
+        return arr
+    pivot=arr[0]
+    left_arr=[i for i in arr[1:] if i<=pivot]
+    right_arr=[i for i in arr[1:] if i>pivot]
+    #print(left_arr)
+    #print(right_arr)
+    return quick_sort(left_arr)+[pivot]+quick_sort(right_arr)
+arr=[30,20,50,40,10,20]
+print(arr)
+print(quick_sort(arr))
+
+o/p:
+[30, 20, 50, 40, 10, 20]
+[10, 20, 20, 30, 40, 50]
+
+2....
+
+def BFS(graph,start):
+    q=[start]
+    visited=[start]
+    while(len(q)!=0):
+        ele=q.pop(0)
+        #print(ele)
+        for i in graph[ele]:
+            if i not in visited:  # check for non visited nodes
+                q.append(i)
+                visited.append(i)
+    print(*visited,sep="->")
+    
+graph_elements={
+    "a":["b","c"],
+    "b":["a","d"],
+    "c":["a","d"],
+    "d":["e","c","b"],
+    "e":["d"]   
+}
+obj=BFS(graph_elements,"e")
+
+o/p:
+e->d->c->b->a
+
+3...
+
+def BFS(graph,start):
+    q=[start]
+    visited=[start]
+    while(len(q)!=0):
+        ele=q.pop(0)
+        #print(ele)
+        for i in graph[ele]:
+            if i not in visited:  # check for non visited nodes
+                q.append(i)
+                visited.append(i)
+    print(visited)
+n=int(input())
+d={}
+for i in range(n):
+    c=input().split()
+    d[c[0]]=c[1]
+m=input().split()
+print(d)
+obj=BFS(d,m[0])
+
+o/p:
+
